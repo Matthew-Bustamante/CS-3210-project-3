@@ -48,11 +48,18 @@
 
 ;;   (set-intersection '(1 2) '(2 4)) => '(2)
 
-(defun set-intersection (set-1 set-2)
 
-  ;;Your implementation go here
+(defun set-intersection (set-1 set-2)
+  (cond 
+  ((equal (length set-1) (length set-2)) t)
+  ((equal (car set-1) (car set-2) ) (car set-1))
+  
+  )
+  
 
 )
+
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -68,7 +75,9 @@
 
 ;;   (set-diff '(1 2) '(2 4)) => '(1)
 
+
 (defun set-diff (set-1 set-2)
+  
 
   ;;Your implementation go here
 
@@ -80,7 +89,7 @@
 
 ;;
 
-;; Examples:
+;; Example
 
 ;;  (boolean-xor t nil) => t
 
