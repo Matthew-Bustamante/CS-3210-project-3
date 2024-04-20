@@ -11,8 +11,12 @@
 ;;  (set-member '(1 2) 3) =>  NIL
 
 (defun set-member (set item)
-
-  ;;Your implementation go here
+  (cond
+   
+    ((equal (length (cdr set)) 0) (print "nil")) ; base case
+    ((equal (car set) item) (print T)) ; if the first element is equal to the item then retun t
+    ((equal item item) set-member(cdr set) item)
+  )
 
 )
 
@@ -51,8 +55,12 @@
 
 (defun set-intersection (set-1 set-2)
   (cond 
-  ((equal (length set-1) (length set-2)) t)
-  ((equal (car set-1) (car set-2) ) (car set-1))
+  ((equal (length set-1) 0) nil) ; Base case if set1 is empty
+  ((equal (length set-2) 0) nil) ; Base case if set 2 is empty
+  (set-intersection('(cdr(set-1)) 'set-2)) ;;recursive call
+  (set-member('set-2 '(car set-1)) (cons (car set-1))) ;; if the first element in set-1 is a member of set -2 
+                                                      ;;then we want to construct a list with that first element
+
   
   )
   
