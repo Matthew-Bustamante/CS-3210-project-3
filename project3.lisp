@@ -89,11 +89,25 @@
 
 
 (defun set-diff (set-1 set-2)
-  
+    (cond
+        ; Base Case: if set 1 is empty return nil
+        ((equal (length set-1 ) 0) nil)
 
-  ;;Your implementation go here
-
-)
+        ; Base Case: if set 2 is empty return nil
+        ((equal (length set-2 ) 0) nil)
+        ; Recursive Call: if the first value of set-1 is not a member of set-2 we want to build a list
+        ; by recussively calling our function set-diff and passing in the remaining values of set-1
+        ((not(set-member set-2 (car set-1))) (cons (car set-1) (set-diff (cdr set-1) set-2)))
+        
+        ; Recursive Call: Using an always true if statement this recusive call (that passes
+        ; in the remainging values of set-1) is called if the above
+        ; if statement fails.  This is so we can continue to search set-1 for values that are not in set-2
+        ((equal set-2 set-2) (set-diff (cdr set-1) set-2))
+        
+        
+        
+        )
+    )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
