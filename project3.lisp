@@ -12,9 +12,9 @@
 
 (defun set-member (set item)
   (cond
-    ((equal (car set) item) (print T)) ;base case 
+    ((equal (car set) item) T) ;base case 
     ((equal (length (cdr set)) 0) nil) ; base case
-    ((equal (car set) item) (print T)) ; if the first element is equal to the item then retun t
+    ((equal (car set) item) T) ; if the first element is equal to the item then retun t
     ((equal item item) (set-member(cdr set) item))
   )
 
@@ -179,6 +179,7 @@
 ;;  (boolean-eval '(and t nil)) => nil
 
 ;;  (boolean-eval '(and t (or nil t)) => t
+;; T and (T or F)
 
 (defun boolean-eval (exp)
 
