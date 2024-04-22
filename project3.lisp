@@ -12,10 +12,10 @@
 
 (defun set-member (set item)
   (cond
-   
+    ((equal (car set) item) (print T)) ;base case 
     ((equal (length (cdr set)) 0) (print "nil")) ; base case
     ((equal (car set) item) (print T)) ; if the first element is equal to the item then retun t
-    ((equal item item) set-member(cdr set) item)
+    ((equal item item) (set-member(cdr set) item))
   )
 
 )
@@ -55,16 +55,20 @@
 
 (defun set-intersection (set-1 set-2)
   (cond 
-  ((equal (length set-1) 0) nil) ; Base case if set1 is empty
-  ((equal (length set-2) 0) nil) ; Base case if set 2 is empty
-  (set-intersection('(cdr(set-1)) 'set-2)) ;;recursive call
-  (set-member('set-2 '(car set-1)) (cons (car set-1))) ;; if the first element in set-1 is a member of set -2 
-                                                      ;;then we want to construct a list with that first element
 
+  ; Base case: if set 1 is empty return nil
+  ((equal (length set-1) 0) nil) 
+
+  ; Base case: if set 2 is empty return nil
+  ((equal (length set-2) 0) nil) 
+  ; recursive call: If the first value of set 1 is a member of set two then we want to contruct a list by recurssively calling our function
+  ; and pass in the remaining values of set-1
+  ((set-member set-2 (car set-1)) (cons (car set-1) (set-intersection (cdr set-1) set-2))); rec
+  
+  ; recursive call: if the first value of set-1 is not a value of set-2 then we want to recusively pass in the other values of set-1 using cdr
+  ((equal set-2 set-2) (set-intersection (cdr set-1) set-2)) ;recursive call
   
   )
-  
-
 )
 
 
