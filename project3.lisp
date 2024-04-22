@@ -13,7 +13,7 @@
 (defun set-member (set item)
   (cond
     ((equal (car set) item) (print T)) ;base case 
-    ((equal (length (cdr set)) 0) (print "nil")) ; base case
+    ((equal (length (cdr set)) 0) nil) ; base case
     ((equal (car set) item) (print T)) ; if the first element is equal to the item then retun t
     ((equal item item) (set-member(cdr set) item))
   )
