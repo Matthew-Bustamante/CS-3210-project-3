@@ -36,6 +36,19 @@
 
   ;;Your implementation go here
 
+(defun set-member (set item)
+  (cond ((null set) nil) ; Base case: If the set is empty, return NIL
+        ((equal (car set) item) t) ; If the first element of the set is equal to the item, return T
+        (t (set-member (cdr set) item)))) ; Recur with the rest of the set
+
+(defun set-union (set-1 set-2)
+  (cond ((null set-1) set-2) ; Base case: If set-1 is empty, return set-2
+        ((null set-2) set-1) ; Base case: If set-2 is empty, return set-1
+        ((set-member set-2 (car set-1)) ; If the first element of set-1 is in set-2
+         (set-union (cdr set-1) set-2)) ; Recur with the rest of set-1 and set-2
+        (t (cons (car set-1) (set-union (cdr set-1) set-2))))) ; Otherwise, add the first element of set-1 to the union and recur with the rest of set-1 and set-2
+
+
 )
 
  
