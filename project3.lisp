@@ -123,7 +123,8 @@
 
 (defun boolean-xor (a b)
 
-  ;;Your implementation go here
+  (or (and a (not b))
+      (and (not a) b))
 
 )
 
@@ -141,7 +142,8 @@
 
 (defun boolean-implies (a b)
 
-;;<Your implementation go here >
+  (or (not a)
+        b)
 
 )
 
