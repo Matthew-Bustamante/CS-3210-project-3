@@ -194,6 +194,7 @@
             ((equal(car exp) 'not) (not(first(cdr exp))))
             ((equal(car exp) 'iff) (boolean-iff(first(cdr exp)) (second (cdr exp))))
             ((equal(car exp) 'xor) (boolean-xor(first(cdr exp)) (second (cdr exp))))
+            ((equal(car exp) 'implies) (boolean-implies(first(cdr exp)) (second (cdr exp))))
             ) 
           )
           ((equal t t) (boolean-eval(second (cdr exp)))) ;else we want to evaluate b
