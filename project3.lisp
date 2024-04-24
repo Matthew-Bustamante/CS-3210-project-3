@@ -184,6 +184,17 @@
 
 (defun boolean-eval (exp)
 
-;;<Your implementation go here >
+  (if (atom exp)
+        exp
+        (let ((op (first exp))
+              (first-arg (boolean-eval (second exp)))
+              (second-arg (if (third exp) (boolean-eval (third exp)))))
+          (case op
+            (and (and first-arg second-arg))
+            (or (or first-arg second-arg))
+            (not (not first-arg))
+            (xor (boolean-xor first-arg second-arg))
+            (implies (boolean-implies first-arg second-arg))
+            (iff (boolean-iff first-arg second-arg)))))
 
 )
