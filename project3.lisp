@@ -197,7 +197,29 @@
 
 (defun boolean-eval (exp)
 
-;;<Your implementation go here >
+  (cond 
+    ((or(equal (first(cdr exp)) t) (equal (first(cdr exp)) nil))
+      (cond 
+        ((or(equal (second(cdr exp)) t) (equal (second(cdr exp)) nil)) ; if b is to or nil then we wan to do the right boolean operation
+          (cond
+            ((equal(car exp) 'and) (and (first(cdr exp)) (second (cdr exp))))
+            ((equal(car exp) 'or) (or(first(cdr exp)) (second (cdr exp))))
+            ((equal(car exp) 'not) (not(first(cdr exp))))
+            ((equal(car exp) 'iff) (boolean-iff(first(cdr exp)) (second (cdr exp))))
+            ((equal(car exp) 'xor) (boolean-xor(first(cdr exp)) (second (cdr exp))))
+            ((equal(car exp) 'implies) (boolean-implies(first(cdr exp)) (second (cdr exp))))
+            ) 
+          )
+          ((equal t t) (boolean-eval(second (cdr exp)))) ;else we want to evaluate b
+          )
+    
+    
+    
+    ) ; if a is t or null then we want to evaluate b
+    
+  
+    ((equal t t) (boolean-eval(first (cdr exp)))); else we want to evaluate a
+  )
 
 )
 
